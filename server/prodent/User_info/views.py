@@ -13,15 +13,12 @@ def testView(request):
 
 
 def getData(request, tag=None):
-    
-    entries = DB_access.objects.get(Uid = tag)
-
-    data = entries.dic()
-    
-    if data == None:
-        return HttpResponse(None)
-    return HttpResponse(json.dumps(data), content_type="application/json")
-
+    try:
+        entries = DB_access.objects.get(Uid = tag)
+        data = entries.dic()
+        return HttpResponse(json.dumps(data), content_type="application/json")
+    except : 
+        return HttpResponse("No Correct Data")
 @csrf_exempt
 def postData(request):
     if request.method == "POST":

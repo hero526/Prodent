@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-import re
-from Prodent_DB import views
+from User_info import views
 
 urlpatterns = [
     url(r'^$', views.testView),
     url(r'^admin/', admin.site.urls),
     url(r'^test/$', views.testView, name='hello'),
-    url(r'^getdata/(?P<tag>\w*\d*)', views.getWhole),
+    url(r'^getdata/(?P<tag>\w*\d*)', views.getData),
+    url(r'^postdata/', views.postData)
 ]
