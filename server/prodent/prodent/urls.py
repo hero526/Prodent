@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^$', views.testView),
     url(r'^admin/', admin.site.urls),
     url(r'^test/$', views.testView, name='hello'),
-    url(r'^getdata/(?P<tag>\w*\d*)', views.getData),
+    url(r'^getdata/(?P<Uid>\w*\d*)', views.getData),
     url(r'^postdata/new/$', views.new_post, name = 'new_post'),
-    url(r'^loadata/', views.loadData)
+    url(r'^databylocale/(?P<Uid>\w*\d*)', views.Databylocale)
 ]

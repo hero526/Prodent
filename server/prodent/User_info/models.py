@@ -7,15 +7,15 @@ class DB_access(models.Model):
     Cash = models.IntegerField(default=5)
     MAC = models.CharField('MAC', default=None, max_length=20)
     Rate = models.FloatField(default=0.0)
-    Coord_x = models.FloatField(default=0.0)
-    Coord_y = models.FloatField(default=0.0)
+    Coord_x = models.FloatField(max_length=25, default=0.0)
+    Coord_y = models.FloatField(max_length=25, default=0.0)
     Password = models.CharField('Password', default=None, max_length=20)
     PhoneNumber = models.CharField('PhoneNumber', default=None, max_length=20)
     Provider = models.CharField('Provider', default=None, max_length=20)
-
+    Status = models.IntegerField(default=0)  # 0:log-off 1:consumer 2:seller
 
     def dic(self):
-        fields=['Uid', 'Name', 'Cash', 'MAC', 'Rate', 'Coord_x', 'Coord_y', 'Password', 'PhoneNumber', 'Provider']
+        fields=['Uid', 'Name', 'Cash', 'MAC', 'Rate', 'Coord_x', 'Coord_y', 'Password', 'PhoneNumber', 'Provider', 'Status']
         result = {}
         for field in fields:
             result[field]=self.__dict__[field]
