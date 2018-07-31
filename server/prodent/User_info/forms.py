@@ -5,5 +5,5 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = DB_access
-        fields = ('Name', 'Cash', 'Rate', 'Coord_x', 'Coord_y', 'Uid', 'Password', 'PhoneNumber', 'Provider')
+        fields = ('Name', 'Cash', 'MAC', 'Rate', 'Coord_x', 'Coord_y', 'Uid', 'Password', 'PhoneNumber', 'Provider')
 

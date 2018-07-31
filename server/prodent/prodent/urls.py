@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^test/$', views.testView, name='hello'),
     url(r'^getdata/(?P<tag>\w*\d*)', views.getData),
-    url(r'^postdata/', views.postData)
+    url(r'^postdata/new/$', views.new_post, name = 'new_post'),
+    url(r'^loadata/', views.loadData)
 ]
