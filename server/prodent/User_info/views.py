@@ -27,8 +27,11 @@ def new_post(request):
         # form = PostForm(request.POST);
         print(request.body)
         info = json.loads(request.body)
+        target = DB_access.objects.get(Uid = info['Uid'])
+        if target != None:
+            target.delete()
+
         if info['Name'] != 'test':
-            
             user = DB_access(Name=info['Name'], Cash=info['Cash'], MAC=info['MAC'], Rate=info['Rate'], Coord_x=info['Coord_x'],  Coord_y=info['Coord_y'], Uid=info['Uid'], Password=info['Password'], PhoneNumber=info['PhoneNumber'], Provider=info['Provider'])
             user.save()
             return HttpResponse("OK")
@@ -49,21 +52,19 @@ def new_post(request):
 
 @csrf_exempt
 def Databylocale(request, Uid=None):
-    min_distance = None
-    entries = DB_access.objects.get(Uid = Uid)
-    target_data = entries.dic()
-    target_x = target_data['Coord_x']
-    target_y = target_data['Coord_y']
-    rows = DB_access.objects.filter(Status=0)
-    ret_str = ""
-    for row in rows:
-        ret_str += str(json.dumps(row.dic()))
-        ret_str += ','
+    try:
+        min_distance = None
+        entries = DB_access.objects.get(Uid = Uid)
+        target_data = entries.dic()
+        target_x = target_data['Coord_x']
+        target_y = target_data['Coord_y']
+        rows = DB_access.objects.filter(Status=2)
+        ret_str = ""
+        for row in rows:
+            ret_str += str(json.dumps(row.dic()))
+            ret_str += ','
             
-    return HttpResponse(ret_str[:-1], content_type="application/json")
+        return HttpResponse(ret_str[:-1], content_type="application/json")
     
-    
-    # return HttpResponse("Invalid data")
-
-
-
+    except:
+        return HttpResponse("Invalid data")
