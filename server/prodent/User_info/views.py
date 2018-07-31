@@ -11,7 +11,7 @@ import json
 def testView(request):
     return HttpResponse('<h2>dbView!</h2>')
 
-
+@csrf_exempt
 def getData(request, tag=None):
     try:
         entries = DB_access.objects.get(Uid = tag)
