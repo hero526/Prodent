@@ -1,16 +1,12 @@
-package com.example.dongwoo.ui;
+package com.example.dongwoo.produnt;
 
-import android.app.Activity;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.AsyncTask;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,7 +22,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class SignUpActivity extends AppCompatActivity {
-    static    String strJson = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +48,10 @@ public class SignUpActivity extends AppCompatActivity {
         } // for now eat exceptions
         return "";
     }
-
-
     JSONObject jsonOb;
     public String POST(String pUrl) {
         String result = "";
         InputStream is = null;
-
-
         EditText eId = (EditText) findViewById(R.id.idEditText);
         String id = eId.getText().toString();
         EditText ePw = (EditText) findViewById(R.id.pwEditText);
@@ -72,38 +63,34 @@ public class SignUpActivity extends AppCompatActivity {
         EditText eCarrier = (EditText) findViewById(R.id.carrierText);
         String carrier = eCarrier.getText().toString();
         String macAddress = getMACAddress("wlan0");
-
         jsonOb = new JSONObject();
         try {
             jsonOb.put("Name", name);
             jsonOb.put("Cash", 0);
             jsonOb.put("MAC", macAddress);
-            jsonOb.put("Rate", 0.0);
+            jsonOb.put("Good", 0);
+            jsonOb.put("Bad", 0);
             jsonOb.put("Coord_x", 0.0);
             jsonOb.put("Coord_y", 0.0);
             jsonOb.put("Uid", id);
             jsonOb.put("Password", pw);
             jsonOb.put("PhoneNumber", phoneNumber);
             jsonOb.put("Provider", carrier);
+            jsonOb.put("Status", 0);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         try {
             URL url = new URL(pUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
             con.setRequestProperty("Accept", "application/json");
             con.setRequestProperty("Content-type", "application/json");
             con.setRequestMethod("POST");
             con.setDoInput(true);
             con.setDoOutput(true);
-
             OutputStream os = con.getOutputStream();
             os.write(jsonOb.toString().getBytes("UTF-8"));
             os.flush();
-
-
             try {
                 is = con.getInputStream();
                 if (is != null)
@@ -118,10 +105,8 @@ public class SignUpActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return result;
     }
-
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {
         private   SignUpActivity signUPAct;
         HttpAsyncTask(SignUpActivity signUPAct) {
@@ -135,7 +120,6 @@ public class SignUpActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(final String result) {
             super.onPostExecute(result);
-
             signUPAct.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -144,8 +128,7 @@ public class SignUpActivity extends AppCompatActivity {
             });
         }
     }
-
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException{
+    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
         String line = "";
         String result = "";
@@ -154,12 +137,10 @@ public class SignUpActivity extends AppCompatActivity {
         inputStream.close();
         return result;
     }
-
     public void onClickSU(View v) {
         HttpAsyncTask httpTask = new HttpAsyncTask(SignUpActivity.this);
         httpTask.execute("http://172.30.7.165:9998/postdata/new/");
     }
-
     public void onClickFinish(View v) {
         finish();
     }

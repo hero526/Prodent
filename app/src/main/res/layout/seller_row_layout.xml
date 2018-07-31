@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="2dp" >
+    <TextView
+        android:id="@+id/seller_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:paddingBottom="10dp"
+        android:text="name"
+        android:textSize="30sp" />
+    <ImageView
+        android:id="@+id/cash_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toLeftOf="@id/cash"
+        android:layout_marginLeft="40dp"
+        android:src="@drawable/nav_cash"/>
+    <TextView
+        android:id="@+id/cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        android:text="money"
+        android:textSize="20sp" />
+    <ImageView
+        android:id="@+id/good_rate_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/seller_name"
+        android:layout_toLeftOf="@id/good_rate"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/good"/>
+    <TextView
+        android:id="@+id/good_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/seller_name"
+        android:layout_toLeftOf="@+id/bad_rate_icon"
+        android:layout_marginRight="20dp"
+        android:text="good"
+        android:textSize="20sp" />
+    <ImageView
+        android:id="@+id/bad_rate_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/seller_name"
+        android:layout_toLeftOf="@id/bad_rate"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/bad"/>
+    <TextView
+        android:id="@+id/bad_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/seller_name"
+        android:layout_toLeftOf="@+id/data_volume_icon"
+        android:layout_marginRight="30dp"
+        android:text="bad"
+        android:textSize="20sp" />
+    <ImageView
+        android:id="@+id/data_volume_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/seller_name"
+        android:layout_toLeftOf="@id/data_volume"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/celldata" />
+    <TextView
+        android:id="@+id/data_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/seller_name"
+        android:layout_alignParentRight="true"
+        android:text="data"
+        android:textSize="20sp" />
+</RelativeLayout>
