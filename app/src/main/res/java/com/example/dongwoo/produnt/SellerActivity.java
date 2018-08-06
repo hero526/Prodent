@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class SellerActivity extends AppCompatActivity {
     SeekBar seekbar1;
@@ -12,7 +13,7 @@ public class SellerActivity extends AppCompatActivity {
     SeekBar seekbar3;
 
     public int data = 0;
-    public int price = 0;
+    public int time = 0;
     public int connect = 0;
 
     @Override
@@ -23,11 +24,15 @@ public class SellerActivity extends AppCompatActivity {
         seekbar2 = (SeekBar) findViewById(R.id.seekBar2);
         seekbar3 = (SeekBar) findViewById(R.id.seekBar3);
 
+        final TextView dataText = (TextView) findViewById(R.id.dataSeek);
+        final TextView timeText = (TextView) findViewById(R.id.timeSeek);
+        final TextView conText = (TextView) findViewById(R.id.conSeek);
+
         seekbar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 data = seekbar1.getProgress();
-                //TODO 전역변수
+                dataText.setText(String.valueOf(i));
             }
 
             @Override
@@ -44,18 +49,18 @@ public class SellerActivity extends AppCompatActivity {
         seekbar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                price = seekbar2.getProgress();
-                //TODO 전역변수
+                time = seekbar2.getProgress();
+                timeText.setText(String.valueOf(i));
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                price = seekbar2.getProgress();
+                time = seekbar2.getProgress();
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                price = seekbar2.getProgress();
+                time = seekbar2.getProgress();
             }
         });
 
@@ -63,7 +68,7 @@ public class SellerActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 connect = seekbar3.getProgress();
-                //TODO 전역변수
+                conText.setText(String.valueOf(i));
             }
 
             @Override

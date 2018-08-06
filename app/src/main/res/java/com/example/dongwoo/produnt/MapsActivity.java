@@ -1,10 +1,12 @@
 package com.example.dongwoo.produnt;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -154,7 +156,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng currentPosition = new LatLng(my_x, my_y);
 
-        web.execute("http://172.30.7.165:9998/databylocale/");
+        web.execute("http://192.168.43.234:9998/databylocale/");
 
         //currentPosition 위치로 카메라 중심을 옮기고 화면 줌을 조정한다. 줌범위는 2~21, 숫자클수록 확대
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( currentPosition, 17));
@@ -241,6 +243,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String seller_name = rowItems.get(position).getSeller_name();
+        //WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        //wifiManager.setWifiEnabled(true);
         Toast.makeText(getApplicationContext(), "connected with " +seller_name, Toast.LENGTH_SHORT).show();
     }
 
@@ -367,8 +371,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String result;
 
                 try {
-                    Log.d("url", "http://172.30.7.165:9998/databylocale/");
-                    URL url = new URL("http://172.30.7.165:9998/databylocale/");
+                    Log.d("url", "http://192.168.43.234:9998/databylocale/");
+                    URL url = new URL("http://192.168.43.234:9998/databylocale/");
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
                     httpURLConnection.setReadTimeout(3000);
@@ -432,6 +436,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onClickSU(View v) {
         HttpAsyncTask httpTask = new HttpAsyncTask(MapsActivity.this);
         //httpTask.execute("http://192.168.43.234:9998/postdata/new/");
-        httpTask.execute("http://159.89.202.87:8000/user_info/");
+        httpTask.execute("http://192.168.43.234:9998/databylocale/");
     }
 }

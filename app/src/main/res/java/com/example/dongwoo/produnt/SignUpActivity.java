@@ -139,7 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void onClickSU(View v) {
         HttpAsyncTask httpTask = new HttpAsyncTask(SignUpActivity.this);
-        httpTask.execute("http://172.30.7.165:9998/postdata/new/");
+        httpTask.execute("http://192.168.43.234:9998/postdata/new/");
     }
     public void onClickFinish(View v) {
         finish();

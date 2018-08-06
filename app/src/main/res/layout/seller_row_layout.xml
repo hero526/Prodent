@@ -19,14 +19,14 @@
         android:layout_height="30dp"
         android:layout_toLeftOf="@id/cash"
         android:layout_marginLeft="40dp"
-        android:src="@drawable/nav_cash"/>
+        android:src="@drawable/time"/>
     <TextView
         android:id="@+id/cash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="5dp"
-        android:text="money"
+        android:text="time"
         android:textSize="20sp" />
     <ImageView
         android:id="@+id/good_rate_icon"

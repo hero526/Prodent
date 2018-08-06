@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     public static final int LOAD_SUCCESS = 101;
     public static final int PW_WRONG = 102;
     private static String id;
-    private String REQUEST_URL ="http://172.30.7.165:9998/getdata/";
+    private String REQUEST_URL ="http://192.168.43.234:9998/getdata/";
     private ProgressDialog progressDialog;
     private EditText login_id;
 

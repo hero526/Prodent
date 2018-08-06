@@ -8,34 +8,35 @@
     tools:context=".roleActivity"
     android:orientation="vertical">
 
+
+    <Button
+        android:id="@+id/role_btn_buyer"
+        android:layout_width="164dp"
+        android:layout_height="68dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/buyer" />
+
+    <Button
+        android:id="@+id/role_btn_seller"
+        android:layout_width="164dp"
+        android:layout_height="68dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="255dp"
+        android:background="@drawable/seller" />
+
     <Button
         android:id="@+id/role_btn_middle"
         android:layout_width="164dp"
         android:layout_height="68dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="173dp"
+        android:layout_marginBottom="200dp"
         android:background="@drawable/middle"
         android:textColor="#fff"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/role_btn_seller"
-        android:layout_width="161dp"
-        android:layout_height="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="222dp"
-        android:background="@drawable/seller" />
-
-    <Button
-        android:id="@+id/role_btn_buyer"
-        android:layout_width="162dp"
-        android:layout_height="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="103dp"
-        android:background="@drawable/buyer" />
 
     <Button
         android:id="@+id/see_profile"
@@ -47,5 +48,4 @@
         android:background="@drawable/info"
         android:textColor="#000000"
         android:textSize="30dp"/>
-
 </RelativeLayout>
